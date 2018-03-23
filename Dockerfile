@@ -24,8 +24,7 @@ RUN pip install -U pip && \
     pip3 install -U virtualenv && \
     virtualenv --python=python3 $HOME/.c9/python3 && \
     source $HOME/.c9/python3/bin/activate && \
-    mkdir /tmp/codeintel && \
-    pip3 install --download /tmp/codeintel codeintel==2.0.0rc2
+    pip install codeintel==2.0.0rc2
 
 # add hub 2.2.9
 RUN cd /opt && \
