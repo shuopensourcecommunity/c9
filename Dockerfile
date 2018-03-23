@@ -7,8 +7,7 @@ RUN apt update && apt upgrade -y && \
     apt install -y apache2-dev apt python-setuptools apt-transport-https 
 
 RUN cd $HOME &&curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash && \
-    . $HOME/.nvm/nvm.sh && nvm install v9.7.0 && \
-    $HOME/.nvm/versions/node/v9.7.0/bin/node --version
+    . $HOME/.nvm/nvm.sh && nvm install v9.8.0 
 
 # get c9 and checkout temp fix for missing plugin
 RUN git clone https://github.com/c9/core.git /c9 && \
@@ -57,4 +56,4 @@ ENV workspace $workspace
 
 EXPOSE 80
 
-CMD /root/.nvm/versions/node/v9.7.0/bin/node /c9/server.js -p $c9port -a $user:$pass --listen 0.0.0.0 -w $workspace
+CMD /root/.nvm/versions/node/v9.8.0/bin/node /c9/server.js -p $c9port -a $user:$pass --listen 0.0.0.0 -w $workspace
