@@ -6,8 +6,7 @@ RUN apt update && apt upgrade -y && \
     apt install -y curl wget vim build-essential gcc git make python2.7 python-dev python3 python3-dev python-pip python3-pip && \
     apt install -y apache2-dev apt python-setuptools apt-transport-https 
 
-RUN cd $HOME &&curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash && \
-    . $HOME/.nvm/nvm.sh && nvm install v9.8.0 
+RUN cd $HOME &&curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
 
 # get c9 and checkout temp fix for missing plugin
 RUN git clone https://github.com/c9/core.git /c9 && \
@@ -39,6 +38,8 @@ RUN git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
     && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
     && chsh -s /bin/zsh
 
+RUN . $HOME/.nvm/nvm.sh && nvm install v9.8.0 
+
 RUN mkdir /workspace && mkdir /root/.pip
 
 COPY pip.conf /root/.pip/pip.conf
@@ -56,5 +57,4 @@ ENV workspace $workspace
 
 EXPOSE 80
 
-#CMD /root/.nvm/versions/node/v9.8.0/bin/node /c9/server.js -p $c9port -a $user:$pass --listen 0.0.0.0 -w $workspace
-CMD /bin/zsh
+CMD /root/.nvm/versions/node/v9.8.0/bin/node /c9/server.js -p $c9port -a $user:$pass --listen 0.0.0.0 -w $workspace
