@@ -22,9 +22,9 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 RUN pip install -U pip && \
     pip3 install -U pip && \
     pip3 install -U virtualenv && \
-    virtualenv --python=python3 $HOME/.c9/python3 && \
-    source $HOME/.c9/python3/bin/activate && \
-    pip install CodeIntel
+    virtualenv --python=python2 $HOME/.c9/python2 && \
+    source $HOME/.c9/python2/bin/activate && \
+    mkdir /tmp/codeintel && pip install --download /tmp/codeintel codeintel==0.9.3
 
 # add hub 2.2.9
 RUN cd /opt && \
