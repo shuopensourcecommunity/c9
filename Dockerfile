@@ -41,7 +41,7 @@ RUN git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
 RUN mkdir /workspace && mkdir /root/.pip
 
 COPY pip.conf /root/.pip/pip.conf
-COPY sources.lsit /etc/apt/sources.list
+COPY sources.list /etc/apt/sources.list
 
 ARG c9port=80
 ARG user=c9
