@@ -6,9 +6,9 @@ RUN apt update && apt upgrade -y && \
     apt install -y curl wget vim build-essential gcc git make python2.7 python-dev python3 python3-dev python-pip python3-pip && \
     apt install -y apache2-dev apt python-setuptools apt-transport-https 
 
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash && \
-    . /root/.nvm/nvm.sh && nvm install v9.7.0 && \
-    /root/.nvm/versions/node/v9.7.0/bin/node --version
+RUN cd $HOME &&curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash && \
+    . $HOME/.nvm/nvm.sh && nvm install v9.7.0 && \
+    $HOME/.nvm/versions/node/v9.7.0/bin/node --version
 
 # get c9 and checkout temp fix for missing plugin
 RUN git clone https://github.com/c9/core.git /c9 && \
