@@ -1,0 +1,30 @@
+FROM shuosc/ubuntu:latest
+MAINTAINER zhonger <zhonger@live.cn>
+
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
+RUN apt update && \
+    apt install -y build-essential gcc git make python python3 python-pip python3-pip wget curl zip && \ 
+    pip install -U pip && \
+    pip3 install -U pip
+
+RUN cd $HOME && mkdir .c9 && wget -c https://mirrors.shu.edu.cn/node/latest/node-v9.7.0-linux-x64.tar.gz && \
+    tar zxf node-v9.7.0-linux-x64.tar.gz && \
+    mv node-v9.7.0-linux-x64 .c9/node && \
+    rm node-v9.7.0-linux-x64.tar.gz
+   
+RUN cd $HOME && wget -c https://ftp.shu.aixinwu.org/linuxsoftware/c9sdk.zip && unzip c9sdk.zip && \
+    cd $HOME/core-master && scripts/install-sdk.sh && scripts/install-sdk.sh
+
+
+
+ARG c9port=8080
+ARG workspace=/root/c9/workspace
+ARG user=root
+ENV c9port $c9port
+ENV workspace $workspace
+
+EXPOSE 8080
+EXPOSE 3000
+
+CMD  $HOME/core-master/node/bin/node $HOME/core-master/server.js -p $c9port -a $user:$pass --listen 0.0.0.0 -w $workspace
