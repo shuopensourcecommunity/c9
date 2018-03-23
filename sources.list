@@ -1,0 +1,8 @@
+deb https://mirrors.shuosc.org/ubuntu/ xenial main restricted universe multiverse
+deb-src https://mirrors.shuosc.org/ubuntu/ xenial main restricted universe multiverse
+deb https://mirrors.shuosc.org/ubuntu/ xenial-security main restricted universe multiverse
+deb-src https://mirrors.shuosc.org/ubuntu/ xenial-security main restricted universe multiverse
+deb https://mirrors.shuosc.org/ubuntu/ xenial-updates main restricted universe multiverse
+deb-src https://mirrors.shuosc.org/ubuntu/ xenial-updates main restricted universe multiverse
+deb https://mirrors.shuosc.org/ubuntu/ xenial-backports main restricted universe multiverse
+deb-src https://mirrors.shuosc.org/ubuntu/ xenial-backports main restricted universe multiverse
