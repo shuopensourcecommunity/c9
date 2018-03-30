@@ -1,0 +1,13 @@
+version: '2'
+services:
+  c9:
+    image: shuosc/c9:latest
+    ports:
+      - 20002:80
+    volumes:
+      - /home/ubuntu/c9-data:/root/workspace
+    environment:
+      - workspace=/root/workspace
+      - user=c9
+      - pass=rules
+    restart: always
